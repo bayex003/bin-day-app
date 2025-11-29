@@ -1,3 +1,4 @@
+import Combine
 import SwiftUI
 
 struct HomeView: View {
@@ -83,60 +84,62 @@ struct HomeView: View {
                     }
                 }
 
-                // SEARCH
-                Section {
-                    SearchCard(
-                        postcode: $postcode,
-                        isSearching: isSearching,
-                        errorMessage: searchErrorMessage,
-                        onSearch: searchTapped
-                    )
-                }
+                if selectedAddress == nil {
+                    // SEARCH
+                    Section {
+                        SearchCard(
+                            postcode: $postcode,
+                            isSearching: isSearching,
+                            errorMessage: searchErrorMessage,
+                            onSearch: searchTapped
+                        )
+                    }
 
-                // ADDRESS RESULTS
-                if !results.isEmpty {
-                    Section("Select your address") {
-                        ForEach(results) { address in
-                            Button {
-                                var enriched = address
+                    // ADDRESS RESULTS
+                    if !results.isEmpty {
+                        Section("Select your address") {
+                            ForEach(results) { address in
+                                Button {
+                                    var enriched = address
 
-                                let trimmedPostcode = enriched.postcode
-                                    .trimmingCharacters(in: .whitespacesAndNewlines)
-                                    .uppercased()
+                                    let trimmedPostcode = enriched.postcode
+                                        .trimmingCharacters(in: .whitespacesAndNewlines)
+                                        .uppercased()
 
-                                // Hard-coded test UPRN for Salford demo
-                                if trimmedPostcode == "M30 8HA" {
-                                    enriched = AddressItem(
-                                        id: enriched.id,
-                                        label: enriched.label,
-                                        postcode: enriched.postcode,
-                                        uprn: "100011343156"
-                                    )
-                                }
-
-                                selectedAddress = enriched
-                                addressStorage.save(enriched)
-                                loadSchedule()
-                                results = []
-                            } label: {
-                                HStack {
-                                    VStack(alignment: .leading, spacing: 4) {
-                                        Text(address.label)
-                                            .font(.subheadline)
-                                        Text(address.postcode)
-                                            .font(.caption2)
-                                            .foregroundStyle(.secondary)
+                                    // Hard-coded test UPRN for Salford demo
+                                    if trimmedPostcode == "M30 8HA" {
+                                        enriched = AddressItem(
+                                            id: enriched.id,
+                                            label: enriched.label,
+                                            postcode: enriched.postcode,
+                                            uprn: "100011343156"
+                                        )
                                     }
-                                    Spacer()
-                                    if selectedAddress?.id == address.id {
-                                        Image(systemName: "checkmark.circle.fill")
-                                            .foregroundStyle(.green)
-                                    } else {
-                                        Image(systemName: "chevron.right")
-                                            .foregroundStyle(.tertiary)
+
+                                    selectedAddress = enriched
+                                    addressStorage.save(enriched)
+                                    loadSchedule()
+                                    results = []
+                                } label: {
+                                    HStack {
+                                        VStack(alignment: .leading, spacing: 4) {
+                                            Text(address.label)
+                                                .font(.subheadline)
+                                            Text(address.postcode)
+                                                .font(.caption2)
+                                                .foregroundStyle(.secondary)
+                                        }
+                                        Spacer()
+                                        if selectedAddress?.id == address.id {
+                                            Image(systemName: "checkmark.circle.fill")
+                                                .foregroundStyle(.green)
+                                        } else {
+                                            Image(systemName: "chevron.right")
+                                                .foregroundStyle(.tertiary)
+                                        }
                                     }
+                                    .padding(.vertical, 4)
                                 }
-                                .padding(.vertical, 4)
                             }
                         }
                     }
@@ -151,6 +154,15 @@ struct HomeView: View {
                     postcode = saved.postcode
                     loadSchedule()
                 }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .addressDidClear)) { _ in
+                selectedAddress = nil
+                postcode = ""
+                collections = []
+                scheduleError = nil
+                results = []
+                searchErrorMessage = nil
+                isLoadingSchedule = false
             }
         }
     }
