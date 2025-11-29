@@ -1,4 +1,6 @@
 import SwiftUI
+import MapKit
+import CoreLocation
 
 struct HomeView: View {
     @EnvironmentObject private var appState: AppState
@@ -15,10 +17,22 @@ struct HomeView: View {
     @State private var isLoadingSchedule: Bool = false
     @State private var scheduleError: String?
 
+    // Nearest recycling centre
+    @State private var addressCoordinate: CLLocationCoordinate2D?
+    @State private var nearestCentre: RecyclingCentre?
+    @State private var nearestCentreError: String?
+    @State private var isLoadingNearestCentre: Bool = false
+    @State private var mapRegion = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 53.4839, longitude: -2.2446),
+        span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+    )
+
     // Services
     private let addressService = GetAddressService()
     private let addressStorage = AddressStorage.shared
     private let scheduleService = BinScheduleService.shared
+    private let geocodingService = GeocodingService()
+    private let recyclingCentreService = RecyclingCentreService()
     private let notificationsManager = NotificationsManager.shared
 
     // All bins for the next upcoming date
@@ -81,6 +95,16 @@ struct HomeView: View {
                             }
                         }
                     }
+
+                    Section("Nearest recycling centre") {
+                        RecyclingCentreMapCard(
+                            isLoading: isLoadingNearestCentre,
+                            error: nearestCentreError,
+                            addressCoordinate: addressCoordinate,
+                            centre: nearestCentre,
+                            region: $mapRegion
+                        )
+                    }
                 }
 
                 // SEARCH
@@ -117,6 +141,7 @@ struct HomeView: View {
                                 selectedAddress = enriched
                                 addressStorage.save(enriched)
                                 loadSchedule()
+                                loadNearestRecyclingCentre()
                                 results = []
                             } label: {
                                 HStack {
@@ -150,6 +175,7 @@ struct HomeView: View {
                     selectedAddress = saved
                     postcode = saved.postcode
                     loadSchedule()
+                    loadNearestRecyclingCentre()
                 }
             }
         }
@@ -227,6 +253,64 @@ struct HomeView: View {
             }
         }
     }
+
+    private func loadNearestRecyclingCentre() {
+        guard let selected = selectedAddress else {
+            addressCoordinate = nil
+            nearestCentre = nil
+            nearestCentreError = nil
+            return
+        }
+
+        isLoadingNearestCentre = true
+        nearestCentreError = nil
+
+        Task {
+            do {
+                let coordinate = try await geocodingService.coordinate(for: selected.postcode)
+                let centre = recyclingCentreService.nearestCentre(to: coordinate)
+
+                await MainActor.run {
+                    self.addressCoordinate = coordinate
+                    self.nearestCentre = centre
+
+                    if let centreCoordinate = centre?.coordinate {
+                        self.mapRegion = regionThatFits(address: coordinate, centre: centreCoordinate)
+                    } else {
+                        self.mapRegion = MKCoordinateRegion(
+                            center: coordinate,
+                            span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                        )
+                    }
+
+                    self.isLoadingNearestCentre = false
+                }
+            } catch {
+                await MainActor.run {
+                    self.nearestCentre = nil
+                    self.addressCoordinate = nil
+                    self.nearestCentreError = (error as? LocalizedError)?.errorDescription
+                        ?? "Couldn't locate your postcode on the map."
+                    self.isLoadingNearestCentre = false
+                }
+            }
+        }
+    }
+
+    private func regionThatFits(address: CLLocationCoordinate2D, centre: CLLocationCoordinate2D) -> MKCoordinateRegion {
+        let center = CLLocationCoordinate2D(
+            latitude: (address.latitude + centre.latitude) / 2,
+            longitude: (address.longitude + centre.longitude) / 2
+        )
+
+        let latitudeDelta = max(abs(address.latitude - centre.latitude) * 2.5, 0.05)
+        let longitudeDelta = max(abs(address.longitude - centre.longitude) * 2.5, 0.05)
+
+        return MKCoordinateRegion(
+            center: center,
+            span: MKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta)
+        )
+    }
 }
 
 // MARK: - Components used by Home
@@ -264,6 +348,111 @@ private struct SelectedAddressCard: View {
                 .shadow(color: Color.black.opacity(0.04), radius: 6, x: 0, y: 3)
         )
     }
+}
+
+private struct RecyclingCentreMapCard: View {
+    let isLoading: Bool
+    let error: String?
+    let addressCoordinate: CLLocationCoordinate2D?
+    let centre: RecyclingCentre?
+    @Binding var region: MKCoordinateRegion
+
+    private var annotationItems: [AnnotationItem] {
+        var items: [AnnotationItem] = []
+
+        if let coordinate = addressCoordinate {
+            items.append(
+                AnnotationItem(
+                    title: "Your address",
+                    coordinate: coordinate,
+                    color: .blue,
+                    systemImage: "house.fill"
+                )
+            )
+        }
+
+        if let centre = centre {
+            items.append(
+                AnnotationItem(
+                    title: centre.name,
+                    coordinate: centre.coordinate,
+                    color: .green,
+                    systemImage: "leaf.fill"
+                )
+            )
+        }
+
+        return items
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            if isLoading {
+                HStack(spacing: 10) {
+                    ProgressView()
+                    Text("Finding the nearest site…")
+                        .font(.subheadline)
+                }
+            } else if let error = error {
+                Text(error)
+                    .font(.footnote)
+                    .foregroundStyle(.red)
+            } else if let centre = centre, addressCoordinate != nil {
+                Map(coordinateRegion: $region, annotationItems: annotationItems) { item in
+                    MapAnnotation(coordinate: item.coordinate) {
+                        VStack(spacing: 6) {
+                            Image(systemName: item.systemImage)
+                                .foregroundColor(.white)
+                                .padding(8)
+                                .background(Circle().fill(item.color))
+
+                            Text(item.title)
+                                .font(.caption2.bold())
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 4)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8, style: .continuous)
+                                        .fill(Color(.systemBackground))
+                                        .shadow(radius: 4)
+                                )
+                        }
+                    }
+                }
+                .frame(height: 220)
+                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(centre.name)
+                        .font(.headline)
+
+                    Text(centre.address)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+
+                    Text(centre.openingHours)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+
+                    Text("Green pin shows where to drop off recycling; blue pin is your address.")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
+            } else {
+                Text("Enter a Salford postcode to see the nearest recycling centre on a map.")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .padding(.vertical, 4)
+    }
+}
+
+private struct AnnotationItem: Identifiable {
+    let id = UUID()
+    let title: String
+    let coordinate: CLLocationCoordinate2D
+    let color: Color
+    let systemImage: String
 }
 
 // MARK: - Search card
