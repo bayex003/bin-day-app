@@ -27,10 +27,12 @@
 		F6981B0F2ED6F4AC00655A7D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6981AFB2ED6F4AC00655A7D /* OnboardingView.swift */; };
 		F6981B102ED6F4AC00655A7D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6981AF92ED6F4AC00655A7D /* HomeView.swift */; };
 		F6981B112ED6F4AC00655A7D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6981B082ED6F4AC00655A7D /* RootView.swift */; };
-		F6981B122ED6F4AC00655A7D /* BinDayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6981B072ED6F4AC00655A7D /* BinDayApp.swift */; };
-		F6981B132ED6F4AC00655A7D /* BinCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6981AF12ED6F4AC00655A7D /* BinCard.swift */; };
-		F6981B162ED6F4AC00655A7D /* ReminderSettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6981AFD2ED6F4AC00655A7D /* ReminderSettingsCard.swift */; };
-		F6981B1B2ED6F4D000655A7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6981B192ED6F4D000655A7D /* Assets.xcassets */; };
+                F6981B122ED6F4AC00655A7D /* BinDayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6981B072ED6F4AC00655A7D /* BinDayApp.swift */; };
+                F6981B132ED6F4AC00655A7D /* BinCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6981AF12ED6F4AC00655A7D /* BinCard.swift */; };
+                F6981B162ED6F4AC00655A7D /* ReminderSettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6981AFD2ED6F4AC00655A7D /* ReminderSettingsCard.swift */; };
+                F6D0A0022F00000100AAA001 /* GeocodingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D0A0012F00000100AAA001 /* GeocodingService.swift */; };
+                F6D0A0042F00000100AAA001 /* RecyclingCentre.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D0A0032F00000100AAA001 /* RecyclingCentre.swift */; };
+                F6981B1B2ED6F4D000655A7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6981B192ED6F4D000655A7D /* Assets.xcassets */; };
 		F6981B1C2ED6F4D000655A7D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6981B172ED6F4D000655A7D /* Preview Assets.xcassets */; };
 		F6BB750C2EDA403D0043785A /* RecyclingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BB750B2EDA40380043785A /* RecyclingItem.swift */; };
 		F6BB75162EDA48000043785A /* NextCollectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BB75152EDA47FA0043785A /* NextCollectionCard.swift */; };
@@ -47,12 +49,14 @@
 		F67251EB2ED74B9E0027DBF7 /* GetAddressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAddressService.swift; sourceTree = "<group>"; };
 		F67251ED2ED74C230027DBF7 /* AddressItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressItem.swift; sourceTree = "<group>"; };
 		F67251F02ED74FFF0027DBF7 /* AddressStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressStorage.swift; sourceTree = "<group>"; };
-		F67251F22ED751540027DBF7 /* BinCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinCollection.swift; sourceTree = "<group>"; };
-		F67251F42ED751840027DBF7 /* BinScheduleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinScheduleService.swift; sourceTree = "<group>"; };
-		F67705AA2EDAE7DC0087F03B /* ManualSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualSetupView.swift; sourceTree = "<group>"; };
-		F67705AC2EDAE8910087F03B /* CollectionsCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsCalendarView.swift; sourceTree = "<group>"; };
-		F67705AE2EDAE9610087F03B /* UpcomingCollectionsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingCollectionsScreen.swift; sourceTree = "<group>"; };
-		F6981AE32ED6F39900655A7D /* Salford Bin Collection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Salford Bin Collection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+                F67251F22ED751540027DBF7 /* BinCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinCollection.swift; sourceTree = "<group>"; };
+                F67251F42ED751840027DBF7 /* BinScheduleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinScheduleService.swift; sourceTree = "<group>"; };
+                F67705AA2EDAE7DC0087F03B /* ManualSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualSetupView.swift; sourceTree = "<group>"; };
+                F67705AC2EDAE8910087F03B /* CollectionsCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsCalendarView.swift; sourceTree = "<group>"; };
+                F67705AE2EDAE9610087F03B /* UpcomingCollectionsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingCollectionsScreen.swift; sourceTree = "<group>"; };
+                F6D0A0012F00000100AAA001 /* GeocodingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodingService.swift; sourceTree = "<group>"; };
+                F6D0A0032F00000100AAA001 /* RecyclingCentre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecyclingCentre.swift; sourceTree = "<group>"; };
+                F6981AE32ED6F39900655A7D /* Salford Bin Collection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Salford Bin Collection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6981AF12ED6F4AC00655A7D /* BinCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinCard.swift; sourceTree = "<group>"; };
 		F6981AF52ED6F4AC00655A7D /* BinPickup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinPickup.swift; sourceTree = "<group>"; };
 		F6981AF72ED6F4AC00655A7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -202,12 +206,13 @@
 			sourceTree = "<group>";
 		};
 		F6981AF62ED6F4AC00655A7D /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				F6BB750B2EDA40380043785A /* RecyclingItem.swift */,
-				F67251F22ED751540027DBF7 /* BinCollection.swift */,
-				F67251ED2ED74C230027DBF7 /* AddressItem.swift */,
-				F67251E92ED74B740027DBF7 /* GetAddressModels.swift */,
+                        isa = PBXGroup;
+                        children = (
+                                F6BB750B2EDA40380043785A /* RecyclingItem.swift */,
+                                F6D0A0032F00000100AAA001 /* RecyclingCentre.swift */,
+                                F67251F22ED751540027DBF7 /* BinCollection.swift */,
+                                F67251ED2ED74C230027DBF7 /* AddressItem.swift */,
+                                F67251E92ED74B740027DBF7 /* GetAddressModels.swift */,
 				F67251E72ED746E50027DBF7 /* OSAddress.swift */,
 				F6981AF52ED6F4AC00655A7D /* BinPickup.swift */,
 			);
@@ -272,11 +277,12 @@
 			sourceTree = "<group>";
 		};
 		F6981B042ED6F4AC00655A7D /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				F63568BC2ED75836005FA5B2 /* NotificationsManager.swift */,
-				F67251F42ED751840027DBF7 /* BinScheduleService.swift */,
-				F67251EB2ED74B9E0027DBF7 /* GetAddressService.swift */,
+                        isa = PBXGroup;
+                        children = (
+                                F6D0A0012F00000100AAA001 /* GeocodingService.swift */,
+                                F63568BC2ED75836005FA5B2 /* NotificationsManager.swift */,
+                                F67251F42ED751840027DBF7 /* BinScheduleService.swift */,
+                                F67251EB2ED74B9E0027DBF7 /* GetAddressService.swift */,
 				F6981B212ED72BDF00655A7D /* OSNamesClient */,
 				F6981B012ED6F4AC00655A7D /* Notifications */,
 			);
@@ -409,18 +415,20 @@
 			files = (
 				F6BB75162EDA48000043785A /* NextCollectionCard.swift in Sources */,
 				F63568C72ED77D08005FA5B2 /* SettingsView.swift in Sources */,
-				F6981B0D2ED6F4AC00655A7D /* BinTheme.swift in Sources */,
-				F67705AD2EDAE89C0087F03B /* CollectionsCalendarView.swift in Sources */,
-				F67251EC2ED74BA80027DBF7 /* GetAddressService.swift in Sources */,
-				F6981B0E2ED6F4AC00655A7D /* BinPickup.swift in Sources */,
+                                F6981B0D2ED6F4AC00655A7D /* BinTheme.swift in Sources */,
+                                F67705AD2EDAE89C0087F03B /* CollectionsCalendarView.swift in Sources */,
+                                F67251EC2ED74BA80027DBF7 /* GetAddressService.swift in Sources */,
+                                F6D0A0022F00000100AAA001 /* GeocodingService.swift in Sources */,
+                                F6981B0E2ED6F4AC00655A7D /* BinPickup.swift in Sources */,
 				F6981B0F2ED6F4AC00655A7D /* OnboardingView.swift in Sources */,
 				F63568C42ED77CE3005FA5B2 /* MainTabView.swift in Sources */,
 				F6981B102ED6F4AC00655A7D /* HomeView.swift in Sources */,
 				F67251E82ED746F30027DBF7 /* OSAddress.swift in Sources */,
-				F67251F52ED7518C0027DBF7 /* BinScheduleService.swift in Sources */,
-				F63568BD2ED75840005FA5B2 /* NotificationsManager.swift in Sources */,
-				F6BB750C2EDA403D0043785A /* RecyclingItem.swift in Sources */,
-				F63568CD2ED7861D005FA5B2 /* UpcomingCollectionsView.swift in Sources */,
+                                F67251F52ED7518C0027DBF7 /* BinScheduleService.swift in Sources */,
+                                F63568BD2ED75840005FA5B2 /* NotificationsManager.swift in Sources */,
+                                F6BB750C2EDA403D0043785A /* RecyclingItem.swift in Sources */,
+                                F6D0A0042F00000100AAA001 /* RecyclingCentre.swift in Sources */,
+                                F63568CD2ED7861D005FA5B2 /* UpcomingCollectionsView.swift in Sources */,
 				F67705AB2EDAE7E00087F03B /* ManualSetupView.swift in Sources */,
 				F6981B112ED6F4AC00655A7D /* RootView.swift in Sources */,
 				F67251EE2ED74C2E0027DBF7 /* AddressItem.swift in Sources */,

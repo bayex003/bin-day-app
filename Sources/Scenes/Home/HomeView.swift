@@ -1,4 +1,5 @@
 import Combine
+import MapKit
 import SwiftUI
 
 struct HomeView: View {
@@ -19,8 +20,18 @@ struct HomeView: View {
     // Services
     private let addressService = GetAddressService()
     private let addressStorage = AddressStorage.shared
+    private let geocodingService = GeocodingService()
     private let scheduleService = BinScheduleService.shared
+    private let recyclingLocator = RecyclingCentreLocator()
     private let notificationsManager = NotificationsManager.shared
+
+    // Recycling centres
+    @State private var nearestCentre: RecyclingCentre?
+    @State private var nearestCentreDistance: CLLocationDistance?
+    @State private var isFindingNearestCentre: Bool = false
+    @State private var nearestCentreError: String?
+    @State private var recyclingMapPosition: MapCameraPosition = .automatic
+    @State private var addressCoordinate: CLLocationCoordinate2D?
 
     // All bins for the next upcoming date
     private var nextDayCollections: [BinCollection] {
@@ -68,6 +79,61 @@ struct HomeView: View {
                             error: scheduleError,
                             collections: collections
                         )
+                    }
+
+                    Section("Nearest recycling centre") {
+                        if isFindingNearestCentre {
+                            HStack(spacing: 10) {
+                                ProgressView()
+                                Text("Finding the nearest recycling centre…")
+                            }
+                        } else if let error = nearestCentreError {
+                            Label(error, systemImage: "exclamationmark.triangle.fill")
+                                .foregroundStyle(.red)
+                        } else if let centre = nearestCentre {
+                            VStack(alignment: .leading, spacing: 8) {
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(centre.name)
+                                        .font(.headline)
+
+                                    Text(centre.address)
+                                        .font(.subheadline)
+                                        .foregroundStyle(.secondary)
+
+                                    if let distance = formattedNearestDistance {
+                                        Label(distance, systemImage: "car.fill")
+                                            .font(.caption)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                }
+
+                                Map(position: $recyclingMapPosition) {
+                                    if let coordinate = addressCoordinate {
+                                        Annotation("You", coordinate: coordinate) {
+                                            ZStack {
+                                                Circle()
+                                                    .fill(.blue.opacity(0.18))
+                                                    .frame(width: 34, height: 34)
+                                                Image(systemName: "house.fill")
+                                                    .foregroundStyle(.blue)
+                                                    .font(.subheadline)
+                                            }
+                                        }
+                                    }
+
+                                    Marker(centre.name, coordinate: centre.coordinate)
+                                        .tint(.green)
+                                }
+                                .frame(height: 220)
+                                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                                .mapStyle(.standard(elevation: .realistic))
+                            }
+                            .padding(.vertical, 4)
+                        } else {
+                            Text("Select an address to find your closest recycling centre.")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                        }
                     }
 
                     // UPCOMING CALENDAR LINK
@@ -121,6 +187,7 @@ struct HomeView: View {
                                     addressStorage.save(enriched)
                                     collections = []
                                     loadSchedule()
+                                    loadNearestRecyclingCentre()
                                     results = []
                                 } label: {
                                     HStack {
@@ -155,6 +222,7 @@ struct HomeView: View {
                     selectedAddress = saved
                     postcode = saved.postcode
                     loadSchedule()
+                    loadNearestRecyclingCentre()
                 }
             }
             .onReceive(NotificationCenter.default.publisher(for: .addressDidClear)) { _ in
@@ -165,6 +233,11 @@ struct HomeView: View {
                 results = []
                 searchErrorMessage = nil
                 isLoadingSchedule = false
+                nearestCentre = nil
+                nearestCentreDistance = nil
+                nearestCentreError = nil
+                isFindingNearestCentre = false
+                addressCoordinate = nil
             }
         }
     }
@@ -241,6 +314,103 @@ struct HomeView: View {
                 }
             }
         }
+    }
+
+    private var formattedNearestDistance: String? {
+        guard let metres = nearestCentreDistance else {
+            return nil
+        }
+
+        let measurement = Measurement(value: metres, unit: UnitLength.meters)
+        let formatter = MeasurementFormatter()
+        formatter.unitOptions = .providedUnit
+        formatter.unitStyle = .medium
+        formatter.numberFormatter.maximumFractionDigits = 1
+
+        if metres >= 1_000 {
+            return formatter.string(from: measurement.converted(to: .kilometers))
+        } else {
+            return formatter.string(from: measurement)
+        }
+    }
+
+    private func loadNearestRecyclingCentre() {
+        guard let selected = selectedAddress else {
+            nearestCentre = nil
+            nearestCentreDistance = nil
+            nearestCentreError = nil
+            addressCoordinate = nil
+            return
+        }
+
+        isFindingNearestCentre = true
+        nearestCentreError = nil
+        nearestCentre = nil
+        nearestCentreDistance = nil
+        addressCoordinate = nil
+
+        Task {
+            do {
+                let coordinate = try await geocodingService.coordinates(for: selected.postcode)
+                guard let match = recyclingLocator.nearestCentre(to: coordinate) else {
+                    await MainActor.run {
+                        self.nearestCentreError = "No recycling centres available."
+                        self.isFindingNearestCentre = false
+                    }
+                    return
+                }
+
+                let region = mapRegion(containing: [coordinate, match.centre.coordinate])
+
+                await MainActor.run {
+                    self.addressCoordinate = coordinate
+                    self.nearestCentre = match.centre
+                    self.nearestCentreDistance = match.distance
+                    self.recyclingMapPosition = .region(region)
+                    self.isFindingNearestCentre = false
+                }
+            } catch {
+                await MainActor.run {
+                    self.nearestCentreError = (error as? LocalizedError)?.errorDescription
+                        ?? "Could not find a nearby recycling centre."
+                    self.isFindingNearestCentre = false
+                }
+            }
+        }
+    }
+
+    private func mapRegion(containing coordinates: [CLLocationCoordinate2D]) -> MKCoordinateRegion {
+        guard let first = coordinates.first else {
+            return MKCoordinateRegion(
+                center: CLLocationCoordinate2D(latitude: 53.483959, longitude: -2.244644),
+                span: MKCoordinateSpan(latitudeDelta: 0.08, longitudeDelta: 0.08)
+            )
+        }
+
+        var minLat = first.latitude
+        var maxLat = first.latitude
+        var minLon = first.longitude
+        var maxLon = first.longitude
+
+        for coordinate in coordinates.dropFirst() {
+            minLat = min(minLat, coordinate.latitude)
+            maxLat = max(maxLat, coordinate.latitude)
+            minLon = min(minLon, coordinate.longitude)
+            maxLon = max(maxLon, coordinate.longitude)
+        }
+
+        let latitudeDelta = max((maxLat - minLat) * 1.4, 0.02)
+        let longitudeDelta = max((maxLon - minLon) * 1.4, 0.02)
+
+        let center = CLLocationCoordinate2D(
+            latitude: (maxLat + minLat) / 2,
+            longitude: (maxLon + minLon) / 2
+        )
+
+        return MKCoordinateRegion(
+            center: center,
+            span: MKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta)
+        )
     }
 }
 
