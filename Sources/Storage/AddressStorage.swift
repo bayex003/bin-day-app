@@ -32,5 +32,10 @@ final class AddressStorage {
 
     func clear() {
         UserDefaults.standard.removeObject(forKey: key)
+        NotificationCenter.default.post(name: .addressDidClear, object: nil)
     }
+}
+
+extension Notification.Name {
+    static let addressDidClear = Notification.Name("addressDidClear")
 }

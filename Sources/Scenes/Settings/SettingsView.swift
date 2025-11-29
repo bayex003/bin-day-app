@@ -1,11 +1,39 @@
+import Combine
 import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject private var appState: AppState
+    @State private var savedAddress: AddressItem? = AddressStorage.shared.load()
+    @State private var isShowingChangeAddressConfirmation = false
 
     var body: some View {
         NavigationStack {
             List {
+                // MARK: - Household address
+                Section("Household") {
+                    if let savedAddress {
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text(savedAddress.label)
+                                .font(.subheadline)
+                            Text(savedAddress.postcode)
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                        }
+                        .padding(.vertical, 2)
+                    } else {
+                        Text("No address saved yet.")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
+
+                    Button(role: .destructive) {
+                        isShowingChangeAddressConfirmation = true
+                    } label: {
+                        Label("Change address", systemImage: "arrow.triangle.2.circlepath")
+                    }
+                    .disabled(savedAddress == nil)
+                }
+
                 // MARK: - Notifications
                 Section {
                     Toggle(isOn: $appState.notificationsEnabled) {
@@ -51,6 +79,25 @@ struct SettingsView: View {
             .listStyle(.insetGrouped)
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
+            .onAppear {
+                savedAddress = AddressStorage.shared.load()
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .addressDidClear)) { _ in
+                savedAddress = nil
+            }
+            .confirmationDialog(
+                "Change household address?",
+                isPresented: $isShowingChangeAddressConfirmation,
+                titleVisibility: .visible
+            ) {
+                Button("Change address", role: .destructive) {
+                    AddressStorage.shared.clear()
+                    savedAddress = nil
+                }
+                Button("Cancel", role: .cancel) {}
+            } message: {
+                Text("This will remove your saved household so you can search for a different address.")
+            }
         }
     }
 }
