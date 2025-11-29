@@ -117,7 +117,9 @@ struct HomeView: View {
                                     }
 
                                     selectedAddress = enriched
+                                    scheduleError = nil
                                     addressStorage.save(enriched)
+                                    collections = []
                                     loadSchedule()
                                     results = []
                                 } label: {
@@ -211,6 +213,7 @@ struct HomeView: View {
 
         isLoadingSchedule = true
         scheduleError = nil
+        collections = []
 
         Task {
             do {
