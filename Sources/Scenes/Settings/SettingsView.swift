@@ -111,13 +111,46 @@ struct AboutAppView: View {
                 Text("About this app")
                     .font(.title2.bold())
 
-                Text("""
-This app helps Salford households quickly check their next bin collections and set simple reminders so bins aren’t missed.
-
-It uses public schedule data for your address and stores everything privately on your device.
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("""
+Bin Day helps Salford households quickly check upcoming bin collections and set gentle reminders so nothing gets missed.
 """)
-                    .font(.body)
-                    .foregroundColor(.secondary)
+                        .font(.body)
+                        .foregroundColor(.secondary)
+
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("What you can do")
+                            .font(.subheadline.bold())
+                        VStack(alignment: .leading, spacing: 4) {
+                            Label("See your next collection at a glance", systemImage: "calendar")
+                            Label("View the next few weeks to plan ahead", systemImage: "clock")
+                            Label("Turn on reminders the evening before and morning of collection day", systemImage: "bell")
+                        }
+                        .foregroundStyle(.secondary)
+                        .font(.subheadline)
+                        .labelStyle(.titleAndIcon)
+                    }
+
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Data & privacy")
+                            .font(.subheadline.bold())
+                        Text("""
+Uses the publicly available Salford City Council schedule for your chosen address and keeps everything on your device. No analytics, ads, or tracking are included.
+""")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
+
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Tips")
+                            .font(.subheadline.bold())
+                        Text("""
+If collection dates look wrong (especially around bank holidays), refresh in Settings or double-check the council website. Reminders will update automatically when new schedules load.
+""")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
+                }
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Version")
