@@ -1,0 +1,650 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F63568BD2ED75840005FA5B2 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63568BC2ED75836005FA5B2 /* NotificationsManager.swift */; };
+		F63568C42ED77CE3005FA5B2 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63568C32ED77CD7005FA5B2 /* MainTabView.swift */; };
+		F63568C72ED77D08005FA5B2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63568C62ED77D00005FA5B2 /* SettingsView.swift */; };
+		F63568CA2ED77D32005FA5B2 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63568C92ED77D2D005FA5B2 /* AboutView.swift */; };
+		F63568CD2ED7861D005FA5B2 /* UpcomingCollectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63568CC2ED7861B005FA5B2 /* UpcomingCollectionsView.swift */; };
+		F67251E82ED746F30027DBF7 /* OSAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67251E72ED746E50027DBF7 /* OSAddress.swift */; };
+		F67251EA2ED74B7D0027DBF7 /* GetAddressModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67251E92ED74B740027DBF7 /* GetAddressModels.swift */; };
+		F67251EC2ED74BA80027DBF7 /* GetAddressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67251EB2ED74B9E0027DBF7 /* GetAddressService.swift */; };
+		F67251EE2ED74C2E0027DBF7 /* AddressItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67251ED2ED74C230027DBF7 /* AddressItem.swift */; };
+		F67251F12ED750080027DBF7 /* AddressStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67251F02ED74FFF0027DBF7 /* AddressStorage.swift */; };
+		F67251F32ED7515B0027DBF7 /* BinCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67251F22ED751540027DBF7 /* BinCollection.swift */; };
+		F67251F52ED7518C0027DBF7 /* BinScheduleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67251F42ED751840027DBF7 /* BinScheduleService.swift */; };
+		F67705AB2EDAE7E00087F03B /* ManualSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67705AA2EDAE7DC0087F03B /* ManualSetupView.swift */; };
+		F67705AD2EDAE89C0087F03B /* CollectionsCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67705AC2EDAE8910087F03B /* CollectionsCalendarView.swift */; };
+		F67705AF2EDAE96D0087F03B /* UpcomingCollectionsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67705AE2EDAE9610087F03B /* UpcomingCollectionsScreen.swift */; };
+		F6981B0D2ED6F4AC00655A7D /* BinTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6981B052ED6F4AC00655A7D /* BinTheme.swift */; };
+		F6981B0E2ED6F4AC00655A7D /* BinPickup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6981AF52ED6F4AC00655A7D /* BinPickup.swift */; };
+		F6981B0F2ED6F4AC00655A7D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6981AFB2ED6F4AC00655A7D /* OnboardingView.swift */; };
+		F6981B102ED6F4AC00655A7D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6981AF92ED6F4AC00655A7D /* HomeView.swift */; };
+		F6981B112ED6F4AC00655A7D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6981B082ED6F4AC00655A7D /* RootView.swift */; };
+		F6981B122ED6F4AC00655A7D /* BinDayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6981B072ED6F4AC00655A7D /* BinDayApp.swift */; };
+		F6981B132ED6F4AC00655A7D /* BinCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6981AF12ED6F4AC00655A7D /* BinCard.swift */; };
+		F6981B162ED6F4AC00655A7D /* ReminderSettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6981AFD2ED6F4AC00655A7D /* ReminderSettingsCard.swift */; };
+		F6981B1B2ED6F4D000655A7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6981B192ED6F4D000655A7D /* Assets.xcassets */; };
+		F6981B1C2ED6F4D000655A7D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6981B172ED6F4D000655A7D /* Preview Assets.xcassets */; };
+		F6BB750C2EDA403D0043785A /* RecyclingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BB750B2EDA40380043785A /* RecyclingItem.swift */; };
+		F6BB75162EDA48000043785A /* NextCollectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BB75152EDA47FA0043785A /* NextCollectionCard.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F63568BC2ED75836005FA5B2 /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
+		F63568C32ED77CD7005FA5B2 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		F63568C62ED77D00005FA5B2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F63568C92ED77D2D005FA5B2 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		F63568CC2ED7861B005FA5B2 /* UpcomingCollectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingCollectionsView.swift; sourceTree = "<group>"; };
+		F67251E72ED746E50027DBF7 /* OSAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSAddress.swift; sourceTree = "<group>"; };
+		F67251E92ED74B740027DBF7 /* GetAddressModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAddressModels.swift; sourceTree = "<group>"; };
+		F67251EB2ED74B9E0027DBF7 /* GetAddressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAddressService.swift; sourceTree = "<group>"; };
+		F67251ED2ED74C230027DBF7 /* AddressItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressItem.swift; sourceTree = "<group>"; };
+		F67251F02ED74FFF0027DBF7 /* AddressStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressStorage.swift; sourceTree = "<group>"; };
+		F67251F22ED751540027DBF7 /* BinCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinCollection.swift; sourceTree = "<group>"; };
+		F67251F42ED751840027DBF7 /* BinScheduleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinScheduleService.swift; sourceTree = "<group>"; };
+		F67705AA2EDAE7DC0087F03B /* ManualSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualSetupView.swift; sourceTree = "<group>"; };
+		F67705AC2EDAE8910087F03B /* CollectionsCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsCalendarView.swift; sourceTree = "<group>"; };
+		F67705AE2EDAE9610087F03B /* UpcomingCollectionsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingCollectionsScreen.swift; sourceTree = "<group>"; };
+		F6981AE32ED6F39900655A7D /* Salford Bin Collection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Salford Bin Collection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6981AF12ED6F4AC00655A7D /* BinCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinCard.swift; sourceTree = "<group>"; };
+		F6981AF52ED6F4AC00655A7D /* BinPickup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinPickup.swift; sourceTree = "<group>"; };
+		F6981AF72ED6F4AC00655A7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6981AF92ED6F4AC00655A7D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F6981AFB2ED6F4AC00655A7D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		F6981AFD2ED6F4AC00655A7D /* ReminderSettingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingsCard.swift; sourceTree = "<group>"; };
+		F6981B052ED6F4AC00655A7D /* BinTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinTheme.swift; sourceTree = "<group>"; };
+		F6981B072ED6F4AC00655A7D /* BinDayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinDayApp.swift; sourceTree = "<group>"; };
+		F6981B082ED6F4AC00655A7D /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		F6981B172ED6F4D000655A7D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F6981B192ED6F4D000655A7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F6BB750B2EDA40380043785A /* RecyclingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecyclingItem.swift; sourceTree = "<group>"; };
+		F6BB75152EDA47FA0043785A /* NextCollectionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextCollectionCard.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F6981B1E2ED7215B00655A7D /* Exceptions for "BinDayApp" folder in "BinDayApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F6981AE22ED6F39900655A7D /* BinDayApp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F63568CE2ED78735005FA5B2 /* State */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = State;
+			sourceTree = "<group>";
+		};
+		F6981AE52ED6F39900655A7D /* BinDayApp */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F6981B1E2ED7215B00655A7D /* Exceptions for "BinDayApp" folder in "BinDayApp" target */,
+			);
+			path = BinDayApp;
+			sourceTree = "<group>";
+		};
+		F6981B212ED72BDF00655A7D /* OSNamesClient */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = OSNamesClient;
+			sourceTree = "<group>";
+		};
+		F6981B272ED72EDD00655A7D /* Config */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Config;
+			sourceTree = "<group>";
+		};
+		F6BB750D2EDA40620043785A /* Recycling */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Recycling;
+			sourceTree = "<group>";
+		};
+		F6BB75112EDA43A10043785A /* Help */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Help;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F6981AE02ED6F39900655A7D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F63568C22ED77CCD005FA5B2 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F63568C32ED77CD7005FA5B2 /* MainTabView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		F63568C52ED77CF8005FA5B2 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F63568C62ED77D00005FA5B2 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		F63568C82ED77D1E005FA5B2 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				F63568C92ED77D2D005FA5B2 /* AboutView.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		F63568CB2ED78601005FA5B2 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				F67705AE2EDAE9610087F03B /* UpcomingCollectionsScreen.swift */,
+				F67705AC2EDAE8910087F03B /* CollectionsCalendarView.swift */,
+				F63568CC2ED7861B005FA5B2 /* UpcomingCollectionsView.swift */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		F67251EF2ED74FF00027DBF7 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				F67251F02ED74FFF0027DBF7 /* AddressStorage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		F67705A92EDAE7C60087F03B /* ManualSetup */ = {
+			isa = PBXGroup;
+			children = (
+				F67705AA2EDAE7DC0087F03B /* ManualSetupView.swift */,
+			);
+			path = ManualSetup;
+			sourceTree = "<group>";
+		};
+		F6981ADA2ED6F39900655A7D = {
+			isa = PBXGroup;
+			children = (
+				F6981B1A2ED6F4D000655A7D /* Resources */,
+				F6981B092ED6F4AC00655A7D /* Sources */,
+				F6981AE52ED6F39900655A7D /* BinDayApp */,
+				F6981AE42ED6F39900655A7D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F6981AE42ED6F39900655A7D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F6981AE32ED6F39900655A7D /* Salford Bin Collection.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F6981AF32ED6F4AC00655A7D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F6981AF12ED6F4AC00655A7D /* BinCard.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F6981AF62ED6F4AC00655A7D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F6BB750B2EDA40380043785A /* RecyclingItem.swift */,
+				F67251F22ED751540027DBF7 /* BinCollection.swift */,
+				F67251ED2ED74C230027DBF7 /* AddressItem.swift */,
+				F67251E92ED74B740027DBF7 /* GetAddressModels.swift */,
+				F67251E72ED746E50027DBF7 /* OSAddress.swift */,
+				F6981AF52ED6F4AC00655A7D /* BinPickup.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F6981AF82ED6F4AC00655A7D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F6981AF72ED6F4AC00655A7D /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F6981AFA2ED6F4AC00655A7D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F6BB75152EDA47FA0043785A /* NextCollectionCard.swift */,
+				F6981AF92ED6F4AC00655A7D /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		F6981AFC2ED6F4AC00655A7D /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				F6981AFB2ED6F4AC00655A7D /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		F6981AFE2ED6F4AC00655A7D /* Reminders */ = {
+			isa = PBXGroup;
+			children = (
+				F6981AFD2ED6F4AC00655A7D /* ReminderSettingsCard.swift */,
+			);
+			path = Reminders;
+			sourceTree = "<group>";
+		};
+		F6981AFF2ED6F4AC00655A7D /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				F67705A92EDAE7C60087F03B /* ManualSetup */,
+				F6BB75112EDA43A10043785A /* Help */,
+				F6BB750D2EDA40620043785A /* Recycling */,
+				F63568CB2ED78601005FA5B2 /* Schedule */,
+				F63568C82ED77D1E005FA5B2 /* About */,
+				F63568C52ED77CF8005FA5B2 /* Settings */,
+				F63568C22ED77CCD005FA5B2 /* Main */,
+				F6981AFA2ED6F4AC00655A7D /* Home */,
+				F6981AFC2ED6F4AC00655A7D /* Onboarding */,
+				F6981AFE2ED6F4AC00655A7D /* Reminders */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		F6981B012ED6F4AC00655A7D /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		F6981B042ED6F4AC00655A7D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F63568BC2ED75836005FA5B2 /* NotificationsManager.swift */,
+				F67251F42ED751840027DBF7 /* BinScheduleService.swift */,
+				F67251EB2ED74B9E0027DBF7 /* GetAddressService.swift */,
+				F6981B212ED72BDF00655A7D /* OSNamesClient */,
+				F6981B012ED6F4AC00655A7D /* Notifications */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F6981B062ED6F4AC00655A7D /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				F6981B052ED6F4AC00655A7D /* BinTheme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		F6981B092ED6F4AC00655A7D /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				F63568CE2ED78735005FA5B2 /* State */,
+				F67251EF2ED74FF00027DBF7 /* Storage */,
+				F6981B272ED72EDD00655A7D /* Config */,
+				F6981AF32ED6F4AC00655A7D /* Components */,
+				F6981AF62ED6F4AC00655A7D /* Models */,
+				F6981AF82ED6F4AC00655A7D /* Resources */,
+				F6981AFF2ED6F4AC00655A7D /* Scenes */,
+				F6981B042ED6F4AC00655A7D /* Services */,
+				F6981B062ED6F4AC00655A7D /* Theme */,
+				F6981B072ED6F4AC00655A7D /* BinDayApp.swift */,
+				F6981B082ED6F4AC00655A7D /* RootView.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		F6981B182ED6F4D000655A7D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F6981B172ED6F4D000655A7D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F6981B1A2ED6F4D000655A7D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F6981B182ED6F4D000655A7D /* Preview Content */,
+				F6981B192ED6F4D000655A7D /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F6981AE22ED6F39900655A7D /* BinDayApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6981AEE2ED6F39A00655A7D /* Build configuration list for PBXNativeTarget "BinDayApp" */;
+			buildPhases = (
+				F6981ADF2ED6F39900655A7D /* Sources */,
+				F6981AE02ED6F39900655A7D /* Frameworks */,
+				F6981AE12ED6F39900655A7D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F63568CE2ED78735005FA5B2 /* State */,
+				F6981AE52ED6F39900655A7D /* BinDayApp */,
+				F6981B212ED72BDF00655A7D /* OSNamesClient */,
+				F6981B272ED72EDD00655A7D /* Config */,
+				F6BB750D2EDA40620043785A /* Recycling */,
+				F6BB75112EDA43A10043785A /* Help */,
+			);
+			name = BinDayApp;
+			packageProductDependencies = (
+			);
+			productName = BinDayApp;
+			productReference = F6981AE32ED6F39900655A7D /* Salford Bin Collection.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F6981ADB2ED6F39900655A7D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2610;
+				LastUpgradeCheck = 2610;
+				TargetAttributes = {
+					F6981AE22ED6F39900655A7D = {
+						CreatedOnToolsVersion = 26.1.1;
+					};
+				};
+			};
+			buildConfigurationList = F6981ADE2ED6F39900655A7D /* Build configuration list for PBXProject "BinDayApp" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F6981ADA2ED6F39900655A7D;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = F6981AE42ED6F39900655A7D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F6981AE22ED6F39900655A7D /* BinDayApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F6981AE12ED6F39900655A7D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6981B1B2ED6F4D000655A7D /* Assets.xcassets in Resources */,
+				F6981B1C2ED6F4D000655A7D /* Preview Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F6981ADF2ED6F39900655A7D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6BB75162EDA48000043785A /* NextCollectionCard.swift in Sources */,
+				F63568C72ED77D08005FA5B2 /* SettingsView.swift in Sources */,
+				F6981B0D2ED6F4AC00655A7D /* BinTheme.swift in Sources */,
+				F67705AD2EDAE89C0087F03B /* CollectionsCalendarView.swift in Sources */,
+				F67251EC2ED74BA80027DBF7 /* GetAddressService.swift in Sources */,
+				F6981B0E2ED6F4AC00655A7D /* BinPickup.swift in Sources */,
+				F6981B0F2ED6F4AC00655A7D /* OnboardingView.swift in Sources */,
+				F63568C42ED77CE3005FA5B2 /* MainTabView.swift in Sources */,
+				F6981B102ED6F4AC00655A7D /* HomeView.swift in Sources */,
+				F67251E82ED746F30027DBF7 /* OSAddress.swift in Sources */,
+				F67251F52ED7518C0027DBF7 /* BinScheduleService.swift in Sources */,
+				F63568BD2ED75840005FA5B2 /* NotificationsManager.swift in Sources */,
+				F6BB750C2EDA403D0043785A /* RecyclingItem.swift in Sources */,
+				F63568CD2ED7861D005FA5B2 /* UpcomingCollectionsView.swift in Sources */,
+				F67705AB2EDAE7E00087F03B /* ManualSetupView.swift in Sources */,
+				F6981B112ED6F4AC00655A7D /* RootView.swift in Sources */,
+				F67251EE2ED74C2E0027DBF7 /* AddressItem.swift in Sources */,
+				F6981B122ED6F4AC00655A7D /* BinDayApp.swift in Sources */,
+				F67251F32ED7515B0027DBF7 /* BinCollection.swift in Sources */,
+				F63568CA2ED77D32005FA5B2 /* AboutView.swift in Sources */,
+				F67705AF2EDAE96D0087F03B /* UpcomingCollectionsScreen.swift in Sources */,
+				F67251F12ED750080027DBF7 /* AddressStorage.swift in Sources */,
+				F6981B132ED6F4AC00655A7D /* BinCard.swift in Sources */,
+				F67251EA2ED74B7D0027DBF7 /* GetAddressModels.swift in Sources */,
+				F6981B162ED6F4AC00655A7D /* ReminderSettingsCard.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F6981AEC2ED6F39A00655A7D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F6981AED2ED6F39A00655A7D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F6981AEF2ED6F39A00655A7D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BinDayApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Salford Bins";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bayex.BinDayApp;
+				PRODUCT_NAME = "Salford Bin Collection";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F6981AF02ED6F39A00655A7D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BinDayApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Salford Bins";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bayex.BinDayApp;
+				PRODUCT_NAME = "Salford Bin Collection";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F6981ADE2ED6F39900655A7D /* Build configuration list for PBXProject "BinDayApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6981AEC2ED6F39A00655A7D /* Debug */,
+				F6981AED2ED6F39A00655A7D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F6981AEE2ED6F39A00655A7D /* Build configuration list for PBXNativeTarget "BinDayApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6981AEF2ED6F39A00655A7D /* Debug */,
+				F6981AF02ED6F39A00655A7D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F6981ADB2ED6F39900655A7D /* Project object */;
+}
